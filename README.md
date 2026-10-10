@@ -9,6 +9,7 @@
 | 子工程 | 领域 | 研究内容 | 引擎版本 | 状态 | 仓库 |
 |---|---|---|---|---|---|
 | GTL-Render-PixelArt3D | Render | 3D 模型渲染成像素画（Never's End 技法）：低分辨率与吸附、精灵排序、真实位置 toon 光照、描边，做成可交互演示小游戏 | 5.8 | 进行中 | [链接](https://github.com/RudAns/GTL-Render-PixelArt3D) |
+| GTL-Audio-Occlusion | Audio | 声音遮挡、阻挡与衍射：房间—门户路径与程差分频映射、穿墙透射、GPU 波动烘焙（FDTD）与可视化、Steam Audio 对照，六组对照可切换 | 5.8 | 进行中 | [链接](https://github.com/RudAns/GTL-Audio-Occlusion) |
 
 状态取值：`规划中` / `进行中` / `已完成` / `已归档`。
 
