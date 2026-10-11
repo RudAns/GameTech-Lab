@@ -10,6 +10,7 @@
 |---|---|---|---|---|---|
 | GTL-Render-PixelArt3D | Render | 3D 模型渲染成像素画（Never's End 技法）：低分辨率与吸附、精灵排序、真实位置 toon 光照、描边，做成可交互演示小游戏 | 5.8 | 进行中 | [链接](https://github.com/RudAns/GTL-Render-PixelArt3D) |
 | GTL-Audio-Occlusion | Audio | 声音遮挡、阻挡与衍射：房间—门户路径与程差分频映射、穿墙透射、GPU 波动烘焙（FDTD）与可视化、Steam Audio 对照，六组对照可切换 | 5.8 | 进行中 | [链接](https://github.com/RudAns/GTL-Audio-Occlusion) |
+| GTL-Physics-GridWater | Physics | 《海狸浮生记》网格水：虚拟管道法水流、恶水潮污染平流与门控扩散、蒸发与灌溉、大坝/防洪闸/自动阀，原作做法与改进方案可逐项切换，做成河谷水利小游戏 | 5.8 | 进行中 | [链接](https://github.com/RudAns/GTL-Physics-GridWater) |
 
 状态取值：`规划中` / `进行中` / `已完成` / `已归档`。
 
