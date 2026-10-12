@@ -1,6 +1,9 @@
 # Sub-projects are independent repositories cloned here locally; never commit them to the index repo.
-Projects/*
-!Projects/README.md
+Projects/
+
+# Local-only notes and drafts (workflow conventions, research report drafts)
+_internal/
+reports/
 
 # OS / editor noise
 Thumbs.db
