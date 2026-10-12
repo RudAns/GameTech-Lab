@@ -33,8 +33,6 @@
 
 **文档**：调研报告 `Docs/Research.html`（约 1.8 万字，65 条中日韩英文献，含可试听的交互示意）、技术落地文档 `Docs/Implementation.html`，均为单文件网页，下载到本地后用浏览器打开。
 
-> 提示：如需在自己的项目中使用，可以把该工程的源码和 `Implementation.html` 一起交给 AI 编程助手，让它参照文档把需要的部分接入你的工程。
-
 ---
 
 ## GTL-Render-PixelArt3D：3D 场景实时渲染成像素画
