@@ -31,8 +31,6 @@
 |---|---|
 | ![第一人称客厅](docs/images/audio-firstperson.jpg) | ![波动烘焙切片](docs/images/audio-wavebake.jpg) |
 
-**文档**：调研报告 `Docs/Research.html`（约 1.8 万字，65 条中日韩英文献，含可试听的交互示意）、技术落地文档 `Docs/Implementation.html`，均为单文件网页，下载到本地后用浏览器打开。
-
 ---
 
 ## GTL-Render-PixelArt3D：3D 场景实时渲染成像素画
