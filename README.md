@@ -1,31 +1,21 @@
 # GameTech-Lab
 
-研究游戏开发中可能用到的各种技术栈，并在 Unreal Engine 5 中把它们做成可以动手操作的小游戏。
-
-每次选一项具体技术，通常取自某款已上线的游戏或某场技术讲座（GDC、SIGGRAPH、CEDEC 等），按三步推进：
-
-1. **技术调研报告**：检索中、英、日、韩文的论文、讲座与技术博客，梳理业界已有方案的思路、取舍与适用场景，分析性能开销和移动端适配，并对现有方案提出有论证的改进。报告最后一章是 UE5 复现方案，作为下一步的实施蓝图。
-2. **UE5 可交互复现 Demo**：按报告方案在 UE5 中实现，并做成一个完整的小游戏。原理拆成分层的开关、调试视图和实时参数，玩家可以逐项打开、关闭、对比，直接看到（或听到）每一步的作用。
-3. **技术落地文档**：Demo 完成后，把每一层的做法、关键参数、引擎接入要点和常见问题整理成一份单文件网页，方便直接移植到其他项目。
-
-每个技术对应一个独立的 UE5 工程仓库，本仓库只做总览和索引。
+研究游戏开发中可能用到的各种技术栈，并在 Unreal Engine 5.8 中做成可交互的复现 Demo。每个技术对应一个独立的工程仓库，本仓库是它们的总览。
 
 ## 工程一览
 
-| 工程 | 领域 | 研究内容 | 引擎 | 进度 |
-|---|---|---|---|---|
-| [GTL-Audio-Occlusion](#gtl-audio-occlusion声音遮挡阻挡与衍射) | 音频 | 声音遮挡、阻挡与衍射：房间—门户传播、分频衍射与透射、GPU 波动烘焙 | UE 5.8 | 已完成 |
-| [GTL-Render-PixelArt3D](#gtl-render-pixelart3d3d-场景实时渲染成像素画) | 渲染 | 3D 场景实时渲染成像素画：低分辨率与吸附、精灵排序、toon 光照与描边 | UE 5.8 | Demo 待验收 |
-| [GTL-Physics-GridWater](#gtl-physics-gridwater海狸浮生记的网格水) | 物理 | 《海狸浮生记》网格水：虚拟管道法水流、恶水污染输运、蒸发与灌溉、水利建筑 | UE 5.8 | Demo 待验收 |
-| [GTL-Net-SharedOcean](#gtl-net-sharedocean盗贼之海式的共享海面) | 网络 | 《盗贼之海》式海面：FFT 巨浪、船体浮力、多人之间一致的海面与船 | UE 5.8 | Demo 待验收 |
-
-进度说明：**已完成**表示调研报告、Demo、技术落地文档三项都已整理好；**Demo 待验收**表示调研报告已完成、Demo 已做完，正在试玩验收，落地文档在验收后编写。截图只为已完成的工程提供，其余工程仍在迭代，暂以文字介绍。
+| 主题 | 工程仓库 | 状态 |
+|---|---|---|
+| [声音遮挡、阻挡与衍射](#gtl-audio-occlusion声音遮挡阻挡与衍射) | [GTL-Audio-Occlusion](https://github.com/RudAns/GTL-Audio-Occlusion) | 已完成 |
+| [3D 场景实时渲染成像素画](#gtl-render-pixelart3d3d-场景实时渲染成像素画) | [GTL-Render-PixelArt3D](https://github.com/RudAns/GTL-Render-PixelArt3D) | 未完成 |
+| [《海狸浮生记》的网格水](#gtl-physics-gridwater海狸浮生记的网格水) | [GTL-Physics-GridWater](https://github.com/RudAns/GTL-Physics-GridWater) | 未完成 |
+| [《盗贼之海》式的共享海面](#gtl-net-sharedocean盗贼之海式的共享海面) | [GTL-Net-SharedOcean](https://github.com/RudAns/GTL-Net-SharedOcean) | 未完成 |
 
 ---
 
 ## GTL-Audio-Occlusion：声音遮挡、阻挡与衍射
 
-**仓库**：[RudAns/GTL-Audio-Occlusion](https://github.com/RudAns/GTL-Audio-Occlusion) · **进度**：已完成
+**仓库**：[RudAns/GTL-Audio-Occlusion](https://github.com/RudAns/GTL-Audio-Occlusion) · **状态**：已完成
 
 ![声音遮挡实验室俯视总览](docs/images/audio-overview.jpg)
 
@@ -47,7 +37,7 @@
 
 ## GTL-Render-PixelArt3D：3D 场景实时渲染成像素画
 
-**仓库**：[RudAns/GTL-Render-PixelArt3D](https://github.com/RudAns/GTL-Render-PixelArt3D) · **进度**：Demo 待验收
+**仓库**：[RudAns/GTL-Render-PixelArt3D](https://github.com/RudAns/GTL-Render-PixelArt3D) · **状态**：未完成
 
 **研究什么**：如何让 3D 场景在运动中仍然像手绘像素画一样干净稳定。调研以 Hypersect 工作室在 GDC 2026 上分享的《Never's End》渲染方案为主线：低分辨率渲染加整数倍最近邻放大、相机与物体吸附到像素网格以消除像素爬行（pixel creep）、亚像素补偿、朝向量化与阶跃关键帧，以及最关键的精灵排序（sprite sorting），即让每个物体整体作为一层绘制、而光照仍按真实位置计算，并处理三个物体互相遮挡成环时的切环策略。
 
@@ -61,7 +51,7 @@
 
 ## GTL-Physics-GridWater：《海狸浮生记》的网格水
 
-**仓库**：[RudAns/GTL-Physics-GridWater](https://github.com/RudAns/GTL-Physics-GridWater) · **进度**：Demo 待验收
+**仓库**：[RudAns/GTL-Physics-GridWater](https://github.com/RudAns/GTL-Physics-GridWater) · **状态**：未完成
 
 **研究什么**：城建游戏《海狸浮生记》（Timberborn，Mechanistry 开发）如何在大网格上实时模拟可被玩家改造的水系。调研拆解了它的虚拟管道法（virtual pipes）水流、恶水潮污染度的平流与门控扩散、按水深与聚簇大小分档的蒸发、灌溉湿度与土壤污染，以及大坝、防洪闸、自动阀等水利建筑的约束方式；同时指出原作在质量守恒上的缺口，提出半隐式摩擦、质量守恒的污染输运等改进。
 
@@ -75,7 +65,7 @@
 
 ## GTL-Net-SharedOcean：《盗贼之海》式的共享海面
 
-**仓库**：[RudAns/GTL-Net-SharedOcean](https://github.com/RudAns/GTL-Net-SharedOcean) · **进度**：Demo 待验收
+**仓库**：[RudAns/GTL-Net-SharedOcean](https://github.com/RudAns/GTL-Net-SharedOcean) · **状态**：未完成
 
 **研究什么**：Rare 的多人航海游戏《盗贼之海》（Sea of Thieves，2018）如何让每个玩家看到同一片起伏的大海、同一条随浪摇晃的船。调研涵盖 Tessendorf FFT 海浪的频谱与级联划分、玩法波段（CPU，服务器与物理都要读取）与画面波段（GPU）的拆分、浮力探针与平面拟合两种浮力模型，以及多人一致性的关键：各端在同步的网络时钟下各自确定性地计算海面，船体由服务器权威模拟，客户端用快照插值并按本地海面重建竖直运动。
 
@@ -84,16 +74,3 @@
 - 在甲板上走动，走到船尾舵轮旁掌舵，升降帆、转舵，在海岛之间航行、收集漂流宝箱，穿过会移动的风暴区。
 - “原理实验台”按“海面与巨浪 / 船体浮力 / 多人一致性”三组分层列出开关：海面分层着色、浮力探针数量与浮力模型、服务器物理频率、海浪时钟模式、船的三种呈现方式、模拟网络延迟等，标明哪些作用于服务器、哪些作用于客户端。
 - 网络仪表实时显示往返时间、两端海浪时钟误差与吃水偏差；快照幽灵用线框画出最新快照与插值回放位置之间的差距。
-
----
-
-## 本仓库内容
-
-```
-GameTech-Lab/
-├─ README.md          本页：项目介绍与各工程总览
-├─ docs/images/       本页截图
-└─ templates/ue5/     UE5 工程通用的 .gitignore 与 .gitattributes（Git LFS）
-```
-
-各子工程是独立仓库，仓库名为 `GTL-<领域>-<主题>`，单独克隆即可运行，运行方式和完整按键说明见各自仓库的 README。
