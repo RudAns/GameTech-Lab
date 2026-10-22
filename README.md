@@ -7,7 +7,7 @@
 | 主题 | 工程仓库 | 状态 |
 |---|---|---|
 | [声音遮挡、阻挡与衍射](#gtl-audio-occlusion声音遮挡阻挡与衍射) | [GTL-Audio-Occlusion](https://github.com/RudAns/GTL-Audio-Occlusion) | 已完成 |
-| [3D 场景实时渲染成像素画](#gtl-render-pixelart3d3d-场景实时渲染成像素画) | [GTL-Render-PixelArt3D](https://github.com/RudAns/GTL-Render-PixelArt3D) | 未完成 |
+| [3D 场景实时渲染成像素画](#gtl-render-pixelart3d3d-场景实时渲染成像素画) | [GTL-Render-PixelArt3D](https://github.com/RudAns/GTL-Render-PixelArt3D) | 已完成 |
 | [《海狸浮生记》的网格水](#gtl-physics-gridwater海狸浮生记的网格水) | [GTL-Physics-GridWater](https://github.com/RudAns/GTL-Physics-GridWater) | 未完成 |
 | [《盗贼之海》式的共享海面](#gtl-net-sharedocean盗贼之海式的共享海面) | [GTL-Net-SharedOcean](https://github.com/RudAns/GTL-Net-SharedOcean) | 未完成 |
 
@@ -35,15 +35,21 @@
 
 ## GTL-Render-PixelArt3D：3D 场景实时渲染成像素画
 
-**仓库**：[RudAns/GTL-Render-PixelArt3D](https://github.com/RudAns/GTL-Render-PixelArt3D) · **状态**：未完成
+**仓库**：[RudAns/GTL-Render-PixelArt3D](https://github.com/RudAns/GTL-Render-PixelArt3D) · **状态**：已完成
+
+![像素风墓园 45° 视角总览](docs/images/pixelart-overview.jpg)
 
 **研究什么**：如何让 3D 场景在运动中仍然像手绘像素画一样干净稳定。调研以 Hypersect 工作室在 GDC 2026 上分享的《Never's End》渲染方案为主线：低分辨率渲染加整数倍最近邻放大、相机与物体吸附到像素网格以消除像素爬行（pixel creep）、亚像素补偿、朝向量化与阶跃关键帧，以及最关键的精灵排序（sprite sorting），即让每个物体整体作为一层绘制、而光照仍按真实位置计算，并处理三个物体互相遮挡成环时的切环策略。
 
-**Demo 里能做什么**：操控一名士兵在像素风墓园里走动，场景中六个彩色踏板各对应一项技术，走上去就出现原理说明。
+**Demo 里能做什么**：操控一名骑士在像素风墓园里走动，场景中六个彩色踏板各对应一项技术，走上去就出现原理说明。
 
-- 左侧“管线开关”逐项控制低分辨率、吸附、排序模式、切环策略、光照位置、描边归属、抖动、toon 色阶等十几项技术，另有参数页可以实时调像素尺寸、每米像素数和光源方向。
-- 调试视图可显示物体 ID、排序层级、真实深度与推移后深度，以及物体之间的前后关系图。
-- 按 M 通过 GPU 回读实测帧间闪烁率，直观对比吸附开关的效果；挑战模式会随机关掉一项技术，让玩家猜是哪一项。
+- 左侧“管线开关”逐项控制低分辨率、吸附、排序模式、切环策略、光照位置、描边归属、抖动、toon 色阶、相机跟随方式等十几项技术，另有参数页可以实时调像素尺寸、每米像素数、俯角和光源方向；视角按 45° 一档旋转。
+- 运动时的稳定性是重点：相机连续跟随、背景按亚像素平滑滚动，角色和它的影子在放大时单独成层、不随背景偏移，因此角色在屏幕上纹丝不动，背景也不会整格跳；按 J 可以和缓动跟随、锁定像素等做法对比，右上角实时显示角色在屏幕上的抖动。
+- 调试视图可显示物体 ID、排序层级、真实深度与推移后深度，以及物体之间的前后关系图；按 M 通过 GPU 回读实测帧间闪烁率；挑战模式会随机关掉一项技术，让玩家猜是哪一项。
+
+| 精灵排序：长矛整体画在墓室墙前 | 三杆成环：互不相交的合并成一层 |
+|---|---|
+| ![精灵排序](docs/images/pixelart-wallsort.jpg) | ![循环遮挡](docs/images/pixelart-cycle.jpg) |
 
 ---
 
