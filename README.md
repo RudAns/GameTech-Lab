@@ -8,7 +8,7 @@
 |---|---|---|
 | [声音遮挡、阻挡与衍射](#gtl-audio-occlusion声音遮挡阻挡与衍射) | [GTL-Audio-Occlusion](https://github.com/RudAns/GTL-Audio-Occlusion) | 已完成 |
 | [3D 场景实时渲染成像素画](#gtl-render-pixelart3d3d-场景实时渲染成像素画) | [GTL-Render-PixelArt3D](https://github.com/RudAns/GTL-Render-PixelArt3D) | 已完成 |
-| [《海狸浮生记》的网格水](#gtl-physics-gridwater海狸浮生记的网格水) | [GTL-Physics-GridWater](https://github.com/RudAns/GTL-Physics-GridWater) | 未完成 |
+| [《海狸浮生记》的网格水](#gtl-physics-gridwater海狸浮生记的网格水) | [GTL-Physics-GridWater](https://github.com/RudAns/GTL-Physics-GridWater) | 已完成 |
 | [《盗贼之海》式的共享海面](#gtl-net-sharedocean盗贼之海式的共享海面) | [GTL-Net-SharedOcean](https://github.com/RudAns/GTL-Net-SharedOcean) | 未完成 |
 
 ---
@@ -55,15 +55,21 @@
 
 ## GTL-Physics-GridWater：《海狸浮生记》的网格水
 
-**仓库**：[RudAns/GTL-Physics-GridWater](https://github.com/RudAns/GTL-Physics-GridWater) · **状态**：未完成
+**仓库**：[RudAns/GTL-Physics-GridWater](https://github.com/RudAns/GTL-Physics-GridWater) · **状态**：已完成
+
+![河谷水利总览](docs/images/gridwater-overview.jpg)
 
 **研究什么**：城建游戏《海狸浮生记》（Timberborn，Mechanistry 开发）如何在大网格上实时模拟可被玩家改造的水系。调研拆解了它的虚拟管道法（virtual pipes）水流、恶水潮污染度的平流与门控扩散、按水深与聚簇大小分档的蒸发、灌溉湿度与土壤污染，以及大坝、防洪闸、自动阀等水利建筑的约束方式；同时指出原作在质量守恒上的缺口，提出半隐式摩擦、质量守恒的污染输运等改进。
 
 **Demo 里能做什么**：一个河谷水利小游戏，目标是撑过 3 个危险季（干旱或恶水潮），同时保持水库清洁、农田存活。
 
-- 可以建堤坝、大坝、防洪闸、自动阀、水泵，挖掘或堆土改变地形，水流、污染和灌溉范围会立即响应。
+- 可以建堤坝、大坝、防洪闸、自动阀、水泵，挖掘或堆土改变地形，水流、污染和灌溉范围会立即响应。相邻的同类建筑自动连成一排，点击即可选中整排，统一调整闸门高度或阀门模式。
 - 右侧“原理实验室”中的七项开关可以在原作做法与改进方案之间逐项切换，左下角的水量账本实时显示守恒误差，关掉出流比例缩放后能看到误差持续增长。
 - 调试视图可显示水深、流速、污染度、聚簇饱和度、灌溉湿度和土壤污染；季节可以快进，也可以直接跳到下一个危险季。
+
+| 恶水潮：自动阀截断污染，水库保持清洁 | 相连的自动阀整排选中、统一切换模式 |
+|---|---|
+| ![恶水潮与自动阀](docs/images/gridwater-badtide.jpg) | ![整排选中](docs/images/gridwater-selection.jpg) |
 
 ---
 
