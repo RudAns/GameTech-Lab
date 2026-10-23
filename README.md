@@ -10,8 +10,8 @@
 | [3D 场景实时渲染成像素画](#gtl-render-pixelart3d3d-场景实时渲染成像素画) | [GTL-Render-PixelArt3D](https://github.com/RudAns/GTL-Render-PixelArt3D) | 已完成 |
 | [《海狸浮生记》的网格水](#gtl-physics-gridwater海狸浮生记的网格水) | [GTL-Physics-GridWater](https://github.com/RudAns/GTL-Physics-GridWater) | 已完成 |
 | [《盗贼之海》式的共享海面](#gtl-net-sharedocean盗贼之海式的共享海面) | [GTL-Net-SharedOcean](https://github.com/RudAns/GTL-Net-SharedOcean) | 已完成 |
+| [《反恐精英2》式的响应式体积烟雾](#gtl-render-volumetricsmoke反恐精英2式的响应式体积烟雾) | [GTL-Render-VolumetricSmoke](https://github.com/RudAns/GTL-Render-VolumetricSmoke) | 已完成 |
 | [《最后生还者 第二部》的物理绳索](#gtl-physics-rope最后生还者-第二部的物理绳索) | [GTL-Physics-Rope](https://github.com/RudAns/GTL-Physics-Rope) | 未完成 |
-| [《反恐精英2》式的响应式体积烟雾](#gtl-render-volumetricsmoke反恐精英2式的响应式体积烟雾) | [GTL-Render-VolumetricSmoke](https://github.com/RudAns/GTL-Render-VolumetricSmoke) | 未完成 |
 
 ---
 
@@ -95,19 +95,9 @@
 
 ---
 
-## GTL-Physics-Rope：《最后生还者 第二部》的物理绳索
-
-**仓库**：[RudAns/GTL-Physics-Rope](https://github.com/RudAns/GTL-Physics-Rope) · **状态**：未完成
-
-**研究什么**：顽皮狗（Naughty Dog）在 GDC 2021 讲座《Rope Simulation in Uncharted 4 and The Last of Us 2》中介绍的两套绳索系统：动态绳用基于位置的动力学（PBD）配合弯曲约束、摩擦约束、多重网格与局部碰撞平面，张紧绳用连续碰撞求出沿凸边滑动的最短路径。调研对照了 PBD/XPBD、长程约束、Cosserat 杆、Cable Joints 以及 UE 和 Source 引擎的现有实现，并给出改进论证与手游分档。
-
-**Demo 里能做什么**：在一座被水淹的废弃庭院里找到三份补给，每一份都要用一种绳索机制拿到：把绳子抛过钢梁再爬上去，荡过积水，以及拖着长度有限的电缆绕过柱子和断墙接到配电箱。
-
----
-
 ## GTL-Render-VolumetricSmoke：《反恐精英2》式的响应式体积烟雾
 
-**仓库**：[RudAns/GTL-Render-VolumetricSmoke](https://github.com/RudAns/GTL-Render-VolumetricSmoke) · **状态**：未完成
+**仓库**：[RudAns/GTL-Render-VolumetricSmoke](https://github.com/RudAns/GTL-Render-VolumetricSmoke) · **状态**：已完成
 
 ![走廊里的烟按体积守恒规则延伸](docs/images/volumetricsmoke-overview.jpg)
 
@@ -119,9 +109,19 @@
 - “原理面板”按“扩散规则 / 交互 / 渲染 / 网络同步 / 公平性”五组分层列出开关：三种扩散规则、体素与热力图显示、步进分辨率、噪声、光照与上采样方式、两种同步方式与注入的关卡差异、烟雾相关性剔除与透视视角，标明哪些作用于服务器、哪些只改本机画面。
 - 右上角实时显示各渲染阶段的 GPU 耗时、每颗烟的联网字节数和与服务器不一致的烟雾数量。
 
-| 子弹通道：正对枪口看穿烟 | 客户端：烟后的哨兵不再发送，透视视角里只剩一名 |
+| 子弹通道：从枪口打向准星，沿弹道能看穿烟 | 客户端：烟后的哨兵不再发送，透视视角里只剩一名 |
 |---|---|
 | ![子弹通道](docs/images/volumetricsmoke-tunnel.jpg) | ![相关性剔除](docs/images/volumetricsmoke-cull.jpg) |
+
+---
+
+## GTL-Physics-Rope：《最后生还者 第二部》的物理绳索
+
+**仓库**：[RudAns/GTL-Physics-Rope](https://github.com/RudAns/GTL-Physics-Rope) · **状态**：未完成
+
+**研究什么**：顽皮狗（Naughty Dog）在 GDC 2021 讲座《Rope Simulation in Uncharted 4 and The Last of Us 2》中介绍的两套绳索系统：动态绳用基于位置的动力学（PBD）配合弯曲约束、摩擦约束、多重网格与局部碰撞平面，张紧绳用连续碰撞求出沿凸边滑动的最短路径。调研对照了 PBD/XPBD、长程约束、Cosserat 杆、Cable Joints 以及 UE 和 Source 引擎的现有实现，并给出改进论证与手游分档。
+
+**Demo 里能做什么**：在一座被水淹的废弃庭院里找到三份补给，每一份都要用一种绳索机制拿到：把绳子抛过钢梁再爬上去，荡过积水，以及拖着长度有限的电缆绕过柱子和断墙接到配电箱。
 
 ---
 
