@@ -10,6 +10,7 @@
 | [3D 场景实时渲染成像素画](#gtl-render-pixelart3d3d-场景实时渲染成像素画) | [GTL-Render-PixelArt3D](https://github.com/RudAns/GTL-Render-PixelArt3D) | 已完成 |
 | [《海狸浮生记》的网格水](#gtl-physics-gridwater海狸浮生记的网格水) | [GTL-Physics-GridWater](https://github.com/RudAns/GTL-Physics-GridWater) | 已完成 |
 | [《盗贼之海》式的共享海面](#gtl-net-sharedocean盗贼之海式的共享海面) | [GTL-Net-SharedOcean](https://github.com/RudAns/GTL-Net-SharedOcean) | 已完成 |
+| [《最后生还者 第二部》的物理绳索](#gtl-physics-rope最后生还者-第二部的物理绳索) | [GTL-Physics-Rope](https://github.com/RudAns/GTL-Physics-Rope) | 未完成 |
 
 ---
 
@@ -90,3 +91,19 @@
 | 浮力探针：每个探针的入水深度与受力 | 客户端：快照幽灵与插值回放位置 |
 |---|---|
 | ![浮力探针](docs/images/sharedocean-probes.jpg) | ![快照幽灵](docs/images/sharedocean-ghost.jpg) |
+
+---
+
+## GTL-Physics-Rope：《最后生还者 第二部》的物理绳索
+
+**仓库**：[RudAns/GTL-Physics-Rope](https://github.com/RudAns/GTL-Physics-Rope) · **状态**：未完成
+
+**研究什么**：顽皮狗（Naughty Dog）在 GDC 2021 讲座《Rope Simulation in Uncharted 4 and The Last of Us 2》中介绍的两套绳索系统：动态绳用基于位置的动力学（PBD）配合弯曲约束、摩擦约束、多重网格与局部碰撞平面，张紧绳用连续碰撞求出沿凸边滑动的最短路径。调研对照了 PBD/XPBD、长程约束、Cosserat 杆、Cable Joints 以及 UE 和 Source 引擎的现有实现，并给出改进论证与手游分档。
+
+**Demo 里能做什么**：在一座被水淹的废弃庭院里找到三份补给，每一份都要用一种绳索机制拿到：把绳子抛过钢梁再爬上去，荡过积水，以及拖着长度有限的电缆绕过柱子和断墙接到配电箱。
+
+---
+
+## 许可证
+
+本仓库的文字、图片与模板文件以 [MIT 许可证](LICENSE) 发布。各工程仓库有各自的许可证说明，其中的第三方素材按各自的许可使用。
