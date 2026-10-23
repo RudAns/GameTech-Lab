@@ -9,7 +9,7 @@
 | [声音遮挡、阻挡与衍射](#gtl-audio-occlusion声音遮挡阻挡与衍射) | [GTL-Audio-Occlusion](https://github.com/RudAns/GTL-Audio-Occlusion) | 已完成 |
 | [3D 场景实时渲染成像素画](#gtl-render-pixelart3d3d-场景实时渲染成像素画) | [GTL-Render-PixelArt3D](https://github.com/RudAns/GTL-Render-PixelArt3D) | 已完成 |
 | [《海狸浮生记》的网格水](#gtl-physics-gridwater海狸浮生记的网格水) | [GTL-Physics-GridWater](https://github.com/RudAns/GTL-Physics-GridWater) | 已完成 |
-| [《盗贼之海》式的共享海面](#gtl-net-sharedocean盗贼之海式的共享海面) | [GTL-Net-SharedOcean](https://github.com/RudAns/GTL-Net-SharedOcean) | 未完成 |
+| [《盗贼之海》式的共享海面](#gtl-net-sharedocean盗贼之海式的共享海面) | [GTL-Net-SharedOcean](https://github.com/RudAns/GTL-Net-SharedOcean) | 已完成 |
 
 ---
 
@@ -75,7 +75,9 @@
 
 ## GTL-Net-SharedOcean：《盗贼之海》式的共享海面
 
-**仓库**：[RudAns/GTL-Net-SharedOcean](https://github.com/RudAns/GTL-Net-SharedOcean) · **状态**：未完成
+**仓库**：[RudAns/GTL-Net-SharedOcean](https://github.com/RudAns/GTL-Net-SharedOcean) · **状态**：已完成
+
+![风暴区的巨浪](docs/images/sharedocean-overview.jpg)
 
 **研究什么**：Rare 的多人航海游戏《盗贼之海》（Sea of Thieves，2018）如何让每个玩家看到同一片起伏的大海、同一条随浪摇晃的船。调研涵盖 Tessendorf FFT 海浪的频谱与级联划分、玩法波段（CPU，服务器与物理都要读取）与画面波段（GPU）的拆分、浮力探针与平面拟合两种浮力模型，以及多人一致性的关键：各端在同步的网络时钟下各自确定性地计算海面，船体由服务器权威模拟，客户端用快照插值并按本地海面重建竖直运动。
 
@@ -84,3 +86,7 @@
 - 在甲板上走动，走到船尾舵轮旁掌舵，升降帆、转舵，在海岛之间航行、收集漂流宝箱，穿过会移动的风暴区。
 - “原理实验台”按“海面与巨浪 / 船体浮力 / 多人一致性”三组分层列出开关：海面分层着色、浮力探针数量与浮力模型、服务器物理频率、海浪时钟模式、船的三种呈现方式、模拟网络延迟等，标明哪些作用于服务器、哪些作用于客户端。
 - 网络仪表实时显示往返时间、两端海浪时钟误差与吃水偏差；快照幽灵用线框画出最新快照与插值回放位置之间的差距。
+
+| 浮力探针：每个探针的入水深度与受力 | 客户端：快照幽灵与插值回放位置 |
+|---|---|
+| ![浮力探针](docs/images/sharedocean-probes.jpg) | ![快照幽灵](docs/images/sharedocean-ghost.jpg) |
