@@ -13,7 +13,6 @@
 | [《反恐精英2》式的响应式体积烟雾](#gtl-render-volumetricsmoke反恐精英2式的响应式体积烟雾) | [GTL-Render-VolumetricSmoke](https://github.com/RudAns/GTL-Render-VolumetricSmoke) | 已完成 |
 | [《最后生还者 第二部》的物理绳索](#gtl-physics-rope最后生还者-第二部的物理绳索) | [GTL-Physics-Rope](https://github.com/RudAns/GTL-Physics-Rope) | 未完成 |
 | [可穿越的体素体积云](#gtl-render-voxelclouds可穿越的体素体积云) | [GTL-Render-VoxelClouds](https://github.com/RudAns/GTL-Render-VoxelClouds) | 未完成 |
-| [本地角色声音：给 Agent 用的“说”和“听”](#gtl-audio-charavoice本地角色声音给-agent-用的说和听) | [GTL-Audio-CharaVoice](https://github.com/RudAns/GTL-Audio-CharaVoice) | 未完成 |
 
 ---
 
@@ -134,16 +133,6 @@
 **研究什么**：Guerrilla 的 Andrew Schneider 在 SIGGRAPH 2023 讲座《Nubis³: Methods (and madness) to model and render immersive real-time voxel-based clouds》中介绍的《地平线：西之绝境》资料片《燃烧海岸》体积云系统：整片云景存成 8 m 一格的三维体素网格，用噪声提升到约 0.5 m 的细节，光线步进在云外按块压缩的 SDF 跳步，太阳光改查预计算的光照网格，并按 200 m 拆分两档分辨率。调研在 RTX 3060 上复核了这些数字，发现讲座的 BC1 距离编码跨厂商时会越界，并给出保守编码和 BC4 对数映射两种改进。
 
 **Demo 里能做什么**：驾驶一架螺旋桨飞机穿云竞速，按顺序穿过 13 个检查环：钻过隧道云，飞进积云中间的云洞，最后穿进雷暴云的巢穴，在闪电中穿出。原理面板可以把云换成 2.5D 包络（隧道被填实）、关掉 SDF 跳空、切换 SDF 编码和步数上限、换回逐采样的光照步进，或者把同一份数据交给 UE 自带的体积云组件对照。
-
----
-
-## GTL-Audio-CharaVoice：本地角色声音：给 Agent 用的“说”和“听”
-
-**仓库**：[RudAns/GTL-Audio-CharaVoice](https://github.com/RudAns/GTL-Audio-CharaVoice) · **状态**：未完成
-
-**研究什么**：在个人电脑上用自己的素材训练角色声音并实时对话所需的整条技术链：基于 GPT-SoVITS 的零样本克隆与少样本微调、中英日三语合成、Silero VAD 加 SenseVoice 的实时听写、BS-Roformer 人声分离与声纹筛选的素材流水线，以及让任意 Agent 通过 OpenAI 兼容接口、命令行和 MCP 调用的本地服务。
-
-**软件里能做什么**：CharaVoice 是一个 Tauri 桌面软件。上传一段录音即可让角色开口，导入音视频后自动分离人声、切句、转写和打分，审阅后一键训练；界面中央的光环随角色说话和用户说话的真实音量起伏，也可以缩成置顶的桌面伴随小窗。Claude Code 等 Agent 接入后就能用这个声音说话、听用户说话。
 
 ---
 
