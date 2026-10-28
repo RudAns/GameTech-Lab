@@ -13,6 +13,7 @@
 | [《反恐精英2》式的响应式体积烟雾](#gtl-render-volumetricsmoke反恐精英2式的响应式体积烟雾) | [GTL-Render-VolumetricSmoke](https://github.com/RudAns/GTL-Render-VolumetricSmoke) | 已完成 |
 | [《最后生还者 第二部》的物理绳索](#gtl-physics-rope最后生还者-第二部的物理绳索) | [GTL-Physics-Rope](https://github.com/RudAns/GTL-Physics-Rope) | 未完成 |
 | [可穿越的体素体积云](#gtl-render-voxelclouds可穿越的体素体积云) | [GTL-Render-VoxelClouds](https://github.com/RudAns/GTL-Render-VoxelClouds) | 已完成 |
+| [机器学习布料](#gtl-anim-mlcloth机器学习布料) | [GTL-Anim-MLCloth](https://github.com/RudAns/GTL-Anim-MLCloth) | 未完成 |
 
 ---
 
@@ -142,6 +143,14 @@
 | 三维体素：隧道是空的 | 2.5D 包络：同一条隧道被填实 |
 |---|---|
 | ![三维体素](docs/images/voxelclouds-voxel.jpg) | ![2.5D 包络](docs/images/voxelclouds-envelope.jpg) |
+
+## GTL-Anim-MLCloth：机器学习布料
+
+**仓库**：[RudAns/GTL-Anim-MLCloth](https://github.com/RudAns/GTL-Anim-MLCloth) · **状态**：未完成
+
+**研究什么**：用小型神经网络代替实时布料求解的做法：Ubisoft 的 SNUG / SNP、EA 在《Madden NFL 21》上线的 Swish（SIGGRAPH 2021 Talks）和 UE 5.x 的 ML Deformer。调研比较了准静态的姿态到形变网络与以惯性为主的骨骼链方案，提出 L0 蒙皮、L1 骨骼链、L2 形状网络、L3 细节姿势残差的分层方案，并分析了开销与手游适配。
+
+**Demo 里能做什么**：在裁缝工作室里操控穿宽松罩衫和披风的写实角色，在 Chaos 物理真值、纯蒙皮和分层 ML 布料之间切换，逐层开关网络和骨骼链，并排对比画面和每帧开销。
 
 ---
 
