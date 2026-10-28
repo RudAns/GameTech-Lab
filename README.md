@@ -12,7 +12,7 @@
 | [《盗贼之海》式的共享海面](#gtl-net-sharedocean盗贼之海式的共享海面) | [GTL-Net-SharedOcean](https://github.com/RudAns/GTL-Net-SharedOcean) | 已完成 |
 | [《反恐精英2》式的响应式体积烟雾](#gtl-render-volumetricsmoke反恐精英2式的响应式体积烟雾) | [GTL-Render-VolumetricSmoke](https://github.com/RudAns/GTL-Render-VolumetricSmoke) | 已完成 |
 | [《最后生还者 第二部》的物理绳索](#gtl-physics-rope最后生还者-第二部的物理绳索) | [GTL-Physics-Rope](https://github.com/RudAns/GTL-Physics-Rope) | 未完成 |
-| [可穿越的体素体积云](#gtl-render-voxelclouds可穿越的体素体积云) | [GTL-Render-VoxelClouds](https://github.com/RudAns/GTL-Render-VoxelClouds) | 未完成 |
+| [可穿越的体素体积云](#gtl-render-voxelclouds可穿越的体素体积云) | [GTL-Render-VoxelClouds](https://github.com/RudAns/GTL-Render-VoxelClouds) | 已完成 |
 
 ---
 
@@ -128,11 +128,20 @@
 
 ## GTL-Render-VoxelClouds：可穿越的体素体积云
 
-**仓库**：[RudAns/GTL-Render-VoxelClouds](https://github.com/RudAns/GTL-Render-VoxelClouds) · **状态**：未完成
+**仓库**：[RudAns/GTL-Render-VoxelClouds](https://github.com/RudAns/GTL-Render-VoxelClouds) · **状态**：已完成
+
+![起点：积云、云塔和远处的雷暴云](docs/images/voxelclouds-overview.jpg)
 
 **研究什么**：Guerrilla 的 Andrew Schneider 在 SIGGRAPH 2023 讲座《Nubis³: Methods (and madness) to model and render immersive real-time voxel-based clouds》中介绍的《地平线：西之绝境》资料片《燃烧海岸》体积云系统：整片云景存成 8 m 一格的三维体素网格，用噪声提升到约 0.5 m 的细节，光线步进在云外按块压缩的 SDF 跳步，太阳光改查预计算的光照网格，并按 200 m 拆分两档分辨率。调研在 RTX 3060 上复核了这些数字，发现讲座的 BC1 距离编码跨厂商时会越界，并给出保守编码和 BC4 对数映射两种改进。
 
-**Demo 里能做什么**：驾驶一架螺旋桨飞机穿云竞速，按顺序穿过 13 个检查环：钻过隧道云，飞进积云中间的云洞，最后穿进雷暴云的巢穴，在闪电中穿出。原理面板可以把云换成 2.5D 包络（隧道被填实）、关掉 SDF 跳空、切换 SDF 编码和步数上限、换回逐采样的光照步进，或者把同一份数据交给 UE 自带的体积云组件对照。
+**Demo 里能做什么**：驾驶一架螺旋桨飞机穿云竞速，按顺序穿过 13 个检查环：钻过隧道云，绕过两座云塔，飞进积云中间的云洞，从层云底下掠过，最后穿进雷暴云的巢穴，在闪电中穿出。在浓云里待久了机翼会结冰失速。
+
+- “原理面板”按“渲染路线 / 云的表示 / 细节 / 光线步进 / 光照 / 步进分辨率 / 调试视图 / 时段”八组分层列出开关：可以把云换成 2.5D 包络（隧道被填实），关掉 SDF 跳空并限制步数，切换四种 SDF 编码并查看越界，换回逐采样的光照步进，或者把同一份数据交给 UE 自带的体积云组件对照。
+- 右上角实时显示光照网格、近层、远层和合成各阶段的 GPU 耗时，以及飞机处的云密度和到最近云的距离。
+
+| 三维体素：隧道是空的 | 2.5D 包络：同一条隧道被填实 |
+|---|---|
+| ![三维体素](docs/images/voxelclouds-voxel.jpg) | ![2.5D 包络](docs/images/voxelclouds-envelope.jpg) |
 
 ---
 
