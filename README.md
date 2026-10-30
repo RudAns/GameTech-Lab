@@ -14,6 +14,7 @@
 | [《最后生还者 第二部》的物理绳索](#gtl-physics-rope最后生还者-第二部的物理绳索) | [GTL-Physics-Rope](https://github.com/RudAns/GTL-Physics-Rope) | 已完成 |
 | [可穿越的体素体积云](#gtl-render-voxelclouds可穿越的体素体积云) | [GTL-Render-VoxelClouds](https://github.com/RudAns/GTL-Render-VoxelClouds) | 已完成 |
 | [机器学习布料](#gtl-anim-mlcloth机器学习布料) | [GTL-Anim-MLCloth](https://github.com/RudAns/GTL-Anim-MLCloth) | 未完成 |
+| [《咚奇刚：蕉力全开》的可破坏地形](#gtl-physics-destructibleterrain咚奇刚蕉力全开的可破坏地形) | [GTL-Physics-DestructibleTerrain](https://github.com/RudAns/GTL-Physics-DestructibleTerrain) | 未完成 |
 
 ---
 
@@ -161,6 +162,17 @@
 **研究什么**：用小型神经网络代替实时布料求解的做法：Ubisoft 的 SNUG / SNP、EA 在《Madden NFL 21》上线的 Swish（SIGGRAPH 2021 Talks）和 UE 5.x 的 ML Deformer。调研比较了准静态的姿态到形变网络与以惯性为主的骨骼链方案，提出 L0 蒙皮、L1 骨骼链、L2 形状网络、L3 细节姿势残差的分层方案，并分析了开销与手游适配。
 
 **Demo 里能做什么**：在裁缝工作室里操控穿宽松罩衫和披风的写实角色，在 Chaos 物理真值、纯蒙皮和分层 ML 布料之间切换，逐层开关网络和骨骼链，并排对比画面和每帧开销。
+
+## GTL-Physics-DestructibleTerrain：《咚奇刚：蕉力全开》的可破坏地形
+
+**仓库**：[RudAns/GTL-Physics-DestructibleTerrain](https://github.com/RudAns/GTL-Physics-DestructibleTerrain) · **状态**：未完成
+
+**研究什么**：任天堂《咚奇刚：蕉力全开》（2025）在 GDC 2026 和 CEDEC 2026 分享及相关专利中公开的体素地形：每个体素存密度、两种材质、损伤和湿度，8×8×8 为一个 chunk，全空的 chunk 不占内存；用 Dual Contouring 生成保留棱角的表面；由攻击硬度和材质硬度决定一拳是打碎、累积损伤还是打不动，达到损伤上限时范围内整体崩落。
+
+**Demo 里能做什么**：在一座分层山体里挖出 6 个埋藏的金块和化石。土和沙一拳就碎，岩石要三拳才崩落，硬岩门要撕下岩块砸开，岩浆要扔冰块冷却才能走过去。
+
+- “原理面板”按“表面生成 / 破坏规则 / 材质表现 / 碎屑与脱困 / 存储 / 调试视图”分层列出开关：可以在方块、Surface Nets 和 Dual Contouring 之间切换同一份体素，关掉硬度规则或“切除脚下以下部分”，查看 chunk 网格、材质 ID、碰撞网格的单一材质、损伤和湿度。
+- 右下角实时显示 chunk 分布、内存占用、三角形数，以及每一拳改写体素和重建网格的耗时。
 
 ---
 
