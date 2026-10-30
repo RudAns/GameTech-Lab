@@ -11,7 +11,7 @@
 | [《海狸浮生记》的网格水](#gtl-physics-gridwater海狸浮生记的网格水) | [GTL-Physics-GridWater](https://github.com/RudAns/GTL-Physics-GridWater) | 已完成 |
 | [《盗贼之海》式的共享海面](#gtl-net-sharedocean盗贼之海式的共享海面) | [GTL-Net-SharedOcean](https://github.com/RudAns/GTL-Net-SharedOcean) | 已完成 |
 | [《反恐精英2》式的响应式体积烟雾](#gtl-render-volumetricsmoke反恐精英2式的响应式体积烟雾) | [GTL-Render-VolumetricSmoke](https://github.com/RudAns/GTL-Render-VolumetricSmoke) | 已完成 |
-| [《最后生还者 第二部》的物理绳索](#gtl-physics-rope最后生还者-第二部的物理绳索) | [GTL-Physics-Rope](https://github.com/RudAns/GTL-Physics-Rope) | 未完成 |
+| [《最后生还者 第二部》的物理绳索](#gtl-physics-rope最后生还者-第二部的物理绳索) | [GTL-Physics-Rope](https://github.com/RudAns/GTL-Physics-Rope) | 已完成 |
 | [可穿越的体素体积云](#gtl-render-voxelclouds可穿越的体素体积云) | [GTL-Render-VoxelClouds](https://github.com/RudAns/GTL-Render-VoxelClouds) | 已完成 |
 | [机器学习布料](#gtl-anim-mlcloth机器学习布料) | [GTL-Anim-MLCloth](https://github.com/RudAns/GTL-Anim-MLCloth) | 未完成 |
 
@@ -119,11 +119,21 @@
 
 ## GTL-Physics-Rope：《最后生还者 第二部》的物理绳索
 
-**仓库**：[RudAns/GTL-Physics-Rope](https://github.com/RudAns/GTL-Physics-Rope) · **状态**：未完成
+**仓库**：[RudAns/GTL-Physics-Rope](https://github.com/RudAns/GTL-Physics-Rope) · **状态**：已完成
 
-**研究什么**：顽皮狗（Naughty Dog）在 GDC 2021 讲座《Rope Simulation in Uncharted 4 and The Last of Us 2》中介绍的两套绳索系统：动态绳用基于位置的动力学（PBD）配合弯曲约束、摩擦约束、多重网格与局部碰撞平面，张紧绳用连续碰撞求出沿凸边滑动的最短路径。调研对照了 PBD/XPBD、长程约束、Cosserat 杆、Cable Joints 以及 UE 和 Source 引擎的现有实现，并给出改进论证与手游分档。
+![跳出去摆荡，双手握在身前](docs/images/rope-swing.jpg)
 
-**Demo 里能做什么**：在一座被水淹的废弃庭院里找到三份补给，每一份都要用一种绳索机制拿到：把绳子抛过钢梁再爬上去，荡过积水，以及拖着长度有限的电缆绕过柱子和断墙接到配电箱。
+**研究什么**：顽皮狗（Naughty Dog）在 GDC 2021 讲座《Rope Simulation in Uncharted 4 and The Last of Us 2》中介绍的两套绳索系统：动态绳用基于位置的动力学（PBD）配合弯曲约束、摩擦约束、多重网格与局部碰撞平面，负责外观；张紧绳用连续碰撞求出沿凸边滑动的最短路径，负责玩法。调研对照了 PBD/XPBD、长程约束、Cosserat 杆、Cable Joints 以及 UE 和 Source 引擎的现有实现，并给出改进论证与手游分档。核心结论是两套系统的分工：玩法只读张紧线，所以软体的抖动不会变成角色的抖动；难点在碰撞而不在求解，UE 自带的 Cable Component 满足不了玩法需求。
+
+**Demo 里能做什么**：在一座被水淹的废弃庭院里找到三份补给，每一份都要用一种绳索机制拿到，右上角的目标面板会逐步提示。
+
+- 把带绳套的一端抛到走廊边的吊货臂上，绳头留在手里，挂住后顺着绳子爬上去；在走廊上抓住另一根绳子跳出去摆荡，到对岸上空松手飞过水道；拖着只有 13.8 m 的电缆绕过柱子和矮墙接到配电箱，绕错方向长度就不够，退回去会自动解开。
+- 左侧原理面板按真实关系分组，可以用鼠标点选：求解器整套替换，约束逐层叠加，摩擦四选一，绳材三选一，张紧线可以在连续扫掠和逐帧射线之间切换，每一项都标明是讲座原作、报告改进还是反例对照。
+- 张紧线、节点、接触法线、张力和碰撞代理都可以画在场景里；暂停后可以逐帧后退，再按录制的输入重放一帧，并显示与录制结果的偏差。
+
+| 顺着绳子往上爬 | 电缆绕过柱子和矮墙 |
+|---|---|
+| ![爬绳](docs/images/rope-climb.jpg) | ![电缆走到配电箱](docs/images/rope-cable.jpg) |
 
 ---
 
