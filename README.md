@@ -15,6 +15,7 @@
 | [可穿越的体素体积云](#gtl-render-voxelclouds可穿越的体素体积云) | [GTL-Render-VoxelClouds](https://github.com/RudAns/GTL-Render-VoxelClouds) | 已完成 |
 | [Radiance Cascades 全局光照](#gtl-render-radiancecascadesradiance-cascades-全局光照) | [GTL-Render-RadianceCascades](https://github.com/RudAns/GTL-Render-RadianceCascades) | 已完成 |
 | [机器学习布料](#gtl-anim-mlcloth机器学习布料) | [GTL-Anim-MLCloth](https://github.com/RudAns/GTL-Anim-MLCloth) | 未完成 |
+| [百人级 RTS 群体寻路](#gtl-ai-crowdpathfinding百人级-rts-群体寻路) | [GTL-AI-CrowdPathfinding](https://github.com/RudAns/GTL-AI-CrowdPathfinding) | 未完成 |
 
 ---
 
@@ -179,6 +180,14 @@
 **研究什么**：用小型神经网络代替实时布料求解的做法：Ubisoft 的 SNUG / SNP、EA 在《Madden NFL 21》上线的 Swish（SIGGRAPH 2021 Talks）和 UE 5.x 的 ML Deformer。调研比较了准静态的姿态到形变网络与以惯性为主的骨骼链方案，提出 L0 蒙皮、L1 骨骼链、L2 形状网络、L3 细节姿势残差的分层方案，并分析了开销与手游适配。
 
 **Demo 里能做什么**：在裁缝工作室里操控穿宽松罩衫和披风的写实角色，在 Chaos 物理真值、纯蒙皮和分层 ML 布料之间切换，逐层开关网络和骨骼链，并排对比画面和每帧开销。
+
+## GTL-AI-CrowdPathfinding：百人级 RTS 群体寻路
+
+**仓库**：[RudAns/GTL-AI-CrowdPathfinding](https://github.com/RudAns/GTL-AI-CrowdPathfinding) · **状态**：未完成
+
+**研究什么**：100 到 300 个单位在 RTS、塔防和动作游戏里怎样一起寻路：流场（《最高指挥官2》的分块流场）、每单位 A\*、共享路径与走廊流场、拥堵图，局部避让的分离力、位置接触、碰撞时间力、ORCA 与速度采样，以及到达时的单点、连锁停止与槽位分配，并与 Mass、DetourCrowd 等更大规模的方案比较开销与适用场景。
+
+**Demo 里能做什么**：在一张有窄桥、大桥和城门的俯视角战场上像 RTS 一样框选和下令，把全局规划、局部避让和到达规则三层任意组合，叠加显示流场箭头、整合场、密度与拥堵代价、路径、速度矢量和 ORCA 速度半平面；四个计时场景（攻城、对向过桥、集结、分兵四路）比较不同组合的用时。
 
 ---
 
