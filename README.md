@@ -13,6 +13,7 @@
 | [《反恐精英2》式的响应式体积烟雾](#gtl-render-volumetricsmoke反恐精英2式的响应式体积烟雾) | [GTL-Render-VolumetricSmoke](https://github.com/RudAns/GTL-Render-VolumetricSmoke) | 已完成 |
 | [《最后生还者 第二部》的物理绳索](#gtl-physics-rope最后生还者-第二部的物理绳索) | [GTL-Physics-Rope](https://github.com/RudAns/GTL-Physics-Rope) | 已完成 |
 | [可穿越的体素体积云](#gtl-render-voxelclouds可穿越的体素体积云) | [GTL-Render-VoxelClouds](https://github.com/RudAns/GTL-Render-VoxelClouds) | 已完成 |
+| [Radiance Cascades 全局光照](#gtl-render-radiancecascadesradiance-cascades-全局光照) | [GTL-Render-RadianceCascades](https://github.com/RudAns/GTL-Render-RadianceCascades) | 已完成 |
 | [机器学习布料](#gtl-anim-mlcloth机器学习布料) | [GTL-Anim-MLCloth](https://github.com/RudAns/GTL-Anim-MLCloth) | 未完成 |
 
 ---
@@ -153,6 +154,23 @@
 | 三维体素：隧道是空的 | 2.5D 包络：同一条隧道被填实 |
 |---|---|
 | ![三维体素](docs/images/voxelclouds-voxel.jpg) | ![2.5D 包络](docs/images/voxelclouds-envelope.jpg) |
+
+## GTL-Render-RadianceCascades：Radiance Cascades 全局光照
+
+**仓库**：[RudAns/GTL-Render-RadianceCascades](https://github.com/RudAns/GTL-Render-RadianceCascades) · **状态**：已完成
+
+![守夜人：墓园里的南瓜灯](docs/images/radiancecascades-overview.jpg)
+
+**研究什么**：Grinding Gear Games 的 Alexander Sannikov 在 ExileCon 2023 讲座《Rendering Path of Exile 2》中公开的全局光照数据结构 Radiance Cascades（辐射级联）：利用离光源越远、光照空间变化越慢而角度变化越快的“半影条件”，每升一级探针间距 ×2、方向 ×4、射线区间 ×4，总开销与光源数量无关。调研核实了论文草稿与后续论文，用自写的二维参考实现验证误差与 bilinear fix 的收益，并与 Lumen、DDGI、屏幕空间 GI 比较，结论是俯视角与 2.5D 游戏最适合。
+
+**Demo 里能做什么**：俯视角小游戏《守夜人》，在夜晚的墓园里用火球点亮 18 盏南瓜灯。场景里没有一盏点光源，地面和墓碑上的光全部是 RC 算出的间接光。
+
+- “原理面板”按“方案 / 级联结构 / 修正 / 着色 / 世界锚定 / 调试视图 / 对照与场景”七组列出开关：在屏幕空间、世界锚定 2.5D 和 Lumen 之间切换，改级数、只让某一级出光，关掉 bilinear fix、发光体注入或距离衰减，查看级联的输入、级联纹理和探针网格，放出 240 个游魂或改用逐个点光源对照开销。
+- 右上角实时显示源准备、级联、解算三段的 GPU 耗时；RTX 3060、1600×900 下屏幕空间约 1.2 ms，世界锚定约 3.6 ms。
+
+| 全局光照关闭：发光体只照亮自己 | RC 世界锚定 2.5D |
+|---|---|
+| ![全局光照关闭](docs/images/radiancecascades-gioff.jpg) | ![世界锚定](docs/images/radiancecascades-world.jpg) |
 
 ## GTL-Anim-MLCloth：机器学习布料
 
